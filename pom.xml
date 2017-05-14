@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>nikhil.test.project</groupId>
+        <artifactId>test</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>scala-fp</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <scala.version>2.12.1</scala.version>
+        <scalaBinaryVersion>2.12.2</scalaBinaryVersion>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.12.1</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor_2.11 -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <version>2.5.0-RC1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest_2.11 -->
+       <!-- <dependency>
+            <groupId>org.scalactic</groupId>
+            <artifactId>scalactic_2.11</artifactId>
+            <version>3.0.1</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.12</artifactId>
+            <version>3.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-testkit_2.11 -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-testkit_2.11</artifactId>
+            <version>2.4.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.novocode</groupId>
+            <artifactId>junit-interface</artifactId>
+            <version>0.11</version>
+        </dependency>
+    </dependencies>
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>scala-2.12</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<dependencies>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.scala-lang</groupId>-->
+                    <!--<artifactId>scala-library</artifactId>-->
+                    <!--<version>${scala.version}</version>-->
+                <!--</dependency>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.scala-lang.modules</groupId>-->
+                    <!--<artifactId>scala-xml_${scalaBinaryVersion}</artifactId>-->
+                    <!--<version>RELEASE</version>-->
+                <!--</dependency>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.scala-lang.modules</groupId>-->
+                    <!--<artifactId>scala-parser-combinators_${scalaBinaryVersion}</artifactId>-->
+                    <!--<version>RELEASE</version>-->
+                <!--</dependency>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.scala-lang.modules</groupId>-->
+                    <!--<artifactId>scala-swing_${scalaBinaryVersion}</artifactId>-->
+                    <!--<version>RELEASE</version>-->
+                <!--</dependency>-->
+            <!--</dependencies>-->
+        <!--</profile>-->
+    <!--</profiles>-->
+
+    <!--<build>-->
+        <!--<sourceDirectory>src/main/scala</sourceDirectory>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>net.alchim31.maven</groupId>-->
+                <!--<artifactId>scala-maven-plugin</artifactId>-->
+                <!--<version>3.2.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                            <!--<goal>testCompile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<args>-->
+                        <!--&lt;!&ndash; work-around for https://issues.scala-lang.org/browse/SI-8358 &ndash;&gt;-->
+                        <!--<arg>-nobootcp</arg>-->
+                    <!--</args>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+
+</project>
