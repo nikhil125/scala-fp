@@ -8,5 +8,6 @@ object Exercise_3_2 {
  def main(as:Array[String]) :Unit = {
 //	 println(List(2,3,4))
 	 val s: Stream[Int] = Stream(1,2,3,4,5)
+
  }
 }

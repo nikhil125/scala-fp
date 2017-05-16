@@ -53,8 +53,23 @@ sealed trait Stream[+A] {
 		foldRight(Stream.empty[A])((a, b) => if (f(a)) Stream.cons(a, b) else b.filter(f))
 	}
 
-	def append[A](that : Stream[A]) : Stream[A] = {
-		foldRight(that)((a,b) => Stream.cons[A](a, b.append(that)))
+	def append[B >: A](that: Stream[B]): Stream[B] = {
+		this match {
+			case Empty => that
+			case Cons(h, t) => Stream.cons(h(), t().append(that))
+		}
+	}
+
+	def find(p: A => Boolean): Option[A] = {
+		filter(p).headOption
+	}
+
+	def constant[A](a: A): Stream[A] = {
+		Stream.cons(a, Stream.apply(a).constant(a))
+	}
+
+	def from(n: Int): Stream[Int] = {
+		Stream.cons(n, from(n+1))
 	}
 }
 
