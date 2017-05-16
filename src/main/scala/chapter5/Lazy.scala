@@ -16,10 +16,7 @@ sealed trait Stream[+A] {
 	def drop(n: Int): Stream[A]
 
 	def exists(p: A => Boolean): Boolean = {
-		this match {
-			case Cons(h, t) => p(h()) || t().exists(p)
-			case _ => false
-		}
+		foldRight(false)((a, b) => p(a) || b)
 	}
 
 	def forAll(p: A => Boolean): Boolean = {
@@ -30,6 +27,7 @@ sealed trait Stream[+A] {
 
 	def foldRight[B](z: => B)(f: (A, => B) => B): B = {
 		this match {
+			case Empty => z
 			case Cons(h, t) => f(h(), t().foldRight(z)(f))
 		}
 	}
@@ -38,11 +36,26 @@ sealed trait Stream[+A] {
 		this match {
 			case Empty => Stream.empty[A]
 			case Cons(h, t) if (f(h())) => Stream.cons(h(), t().takeWhile(f))
-			case Cons(h, t) if (!f(h())) => t().takeWhile( f)
+			case Cons(h, t) if (!f(h())) => t().takeWhile(f)
 
 		}
 	}
 
+	def headOption: Option[A] = {
+		foldRight(Option.empty[A])((a, b) => Option[A](a))
+	}
+
+	def map[B](f: A => B): Stream[B] = {
+		foldRight(Stream.empty[B])((a, b) => Stream.cons(f(a), b))
+	}
+
+	def filter(f: A => Boolean): Stream[A] = {
+		foldRight(Stream.empty[A])((a, b) => if (f(a)) Stream.cons(a, b) else b.filter(f))
+	}
+
+	def append[A](that : Stream[A]) : Stream[A] = {
+		foldRight(that)((a,b) => Stream.cons[A](a, b.append(that)))
+	}
 }
 
 case object Empty extends Stream[Nothing] {
